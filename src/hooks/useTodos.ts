@@ -6,22 +6,24 @@ type ReducerAction =
   | { type: "remove"; value: TodoId }
 
 function reducer(prevTodos: ListOfTodos, action: ReducerAction): ListOfTodos {
-  if (action.type === "add_todo") {
-    let newId = 0
-    prevTodos.forEach((todo) => {
-      if (todo.id >= newId) newId = todo.id + 1
-    })
+  switch (action.type) {
+    case "add_todo": {
+      const { title, description, tags } = action.value
 
-    const { title, description, tags } = action.value
-    return [...prevTodos, { id: newId, title, description, tags }]
+      let newId = 0
+      prevTodos.forEach((todo) => {
+        if (todo.id >= newId) newId = todo.id + 1
+      })
+
+      return [...prevTodos, { id: newId, title, description, tags }]
+    }
+    case "remove": {
+      const newTodos = prevTodos.filter((todo) => todo.id !== action.value.id)
+      return newTodos
+    }
+    default:
+      return prevTodos
   }
-
-  if (action.type === "remove") {
-    const newTodos = prevTodos.filter((todo) => todo.id !== action.value.id)
-    return newTodos
-  }
-
-  return prevTodos
 }
 
 export function useTodos({ initialTodos }: { initialTodos: ListOfTodos }) {
