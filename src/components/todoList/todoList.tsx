@@ -11,7 +11,11 @@ export function TodoList({ children }: Props) {
       {children ? (
         children
       ) : (
-        <motion.article layout>
+        <motion.article
+          layout
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+        >
           <h2>Parece que esto esta vació, intenta añadir una tarea...</h2>
         </motion.article>
       )}
