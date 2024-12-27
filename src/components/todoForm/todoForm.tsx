@@ -18,11 +18,11 @@ export function TodoForm({ addFunction }: Props) {
       <legend>Crear todo (tareas por hacer)</legend>
       <label>
         Titulo:
-        <input type="text" name="title"></input>
+        <input type="text" name="title" required></input>
       </label>
       <label>
         Descripción:
-        <textarea name="description"></textarea>
+        <textarea name="description" required></textarea>
       </label>
 
       <button type="submit">Crear todo</button>
