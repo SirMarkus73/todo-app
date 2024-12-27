@@ -14,7 +14,7 @@ const initialTodos: ListOfTodos = [
   },
   {
     id: 2,
-    title: "Programar aplicacion todo",
+    title: "Programar aplicación todo",
     description:
       "tengo que continuar programando esta aplicación porque es muy importante para aprender",
   },
@@ -29,15 +29,10 @@ function App() {
       </header>
       <main>
         <TodoList>
-          {todos.length > 0 ? (
+          {todos.length > 0 &&
             todos.map((todo) => (
               <Todo key={todo.id} removeFunction={remove_todo} {...todo} />
-            ))
-          ) : (
-            <section>
-              <h2>Parece que esto esta vació, prueba a añadir una tarea...</h2>
-            </section>
-          )}
+            ))}
         </TodoList>
       </main>
     </>
