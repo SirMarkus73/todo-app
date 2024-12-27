@@ -4,6 +4,7 @@ import { Todo } from "./components/todo/todo"
 import { TodoList } from "./components/todoList/todoList"
 import type { ListOfTodos } from "./types"
 import { useTodos } from "./hooks/useTodos"
+import { useEffect, useState } from "react"
 
 const initialTodos: ListOfTodos = [
   {
@@ -22,6 +23,14 @@ const initialTodos: ListOfTodos = [
 
 function App() {
   const { todos, add_todo, remove_todo } = useTodos({ initialTodos })
+  const [loads, setLoads] = useState(0)
+
+  useEffect(() => {
+    setLoads((prev) => prev + 1)
+  }, [setLoads])
+
+  const useDelay = loads >= 1 ? false : true
+
   return (
     <>
       <header>
@@ -30,8 +39,13 @@ function App() {
       <main>
         <TodoList>
           {todos.length > 0 &&
-            todos.map((todo) => (
-              <Todo key={todo.id} removeFunction={remove_todo} {...todo} />
+            todos.map((todo, index) => (
+              <Todo
+                key={todo.id}
+                removeFunction={remove_todo}
+                startingDelay={useDelay ? index + 1 * 0.2 : undefined}
+                {...todo}
+              />
             ))}
         </TodoList>
       </main>
