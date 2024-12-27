@@ -18,7 +18,7 @@ function reducer(prevTodos: ListOfTodos, action: ReducerAction): ListOfTodos {
       return [...prevTodos, { id: newId, title, description, tags }]
     }
     case "remove": {
-      const newTodos = prevTodos.filter((todo) => todo.id !== action.value.id)
+      const newTodos = prevTodos.filter((todo) => todo.id !== action.value)
       return newTodos
     }
     default:

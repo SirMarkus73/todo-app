@@ -5,6 +5,6 @@ export interface Todo {
   tags?: string[]
 }
 
-export type TodoId = Pick<Todo, "id">
+export type TodoId = Todo["id"]
 export type PublicTodo = Omit<Todo, "id">
 export type ListOfTodos = Todo[]

@@ -21,7 +21,7 @@ const initialTodos: ListOfTodos = [
 ]
 
 function App() {
-  const { todos, add_todo } = useTodos({ initialTodos })
+  const { todos, add_todo, remove_todo } = useTodos({ initialTodos })
   return (
     <>
       <header>
@@ -29,9 +29,15 @@ function App() {
       </header>
       <main>
         <TodoList>
-          {todos.map((todo) => (
-            <Todo key={todo.id} {...todo} />
-          ))}
+          {todos.length > 0 ? (
+            todos.map((todo) => (
+              <Todo key={todo.id} removeFunction={remove_todo} {...todo} />
+            ))
+          ) : (
+            <section>
+              <h2>Parece que esto esta vació, prueba a añadir una tarea...</h2>
+            </section>
+          )}
         </TodoList>
       </main>
     </>

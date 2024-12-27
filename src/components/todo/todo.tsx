@@ -1,7 +1,15 @@
-import type { Todo as TodoInterface } from "../../types.d.ts"
+import type { TodoId, Todo as TodoInterface } from "../../types.d.ts"
 import "./todo.css"
 
-export function Todo({ title, description, tags }: TodoInterface) {
+interface Props extends TodoInterface {
+  removeFunction: ({ id }: { id: TodoId }) => void
+}
+
+export function Todo({ id, title, description, tags, removeFunction }: Props) {
+  const onClickRemoveTodo = () => {
+    removeFunction({ id })
+  }
+
   return (
     <article className="todo">
       <h2>{title}</h2>
@@ -13,7 +21,11 @@ export function Todo({ title, description, tags }: TodoInterface) {
           ))}
         </ul>
       )}
-      <button type="button" className="remove-button">
+      <button
+        type="button"
+        className="remove-button"
+        onClick={onClickRemoveTodo}
+      >
         Eliminar
       </button>
     </article>
