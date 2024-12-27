@@ -30,7 +30,7 @@ function App() {
       <main>
         <TodoList>
           {todos.map((todo) => (
-            <Todo {...todo} />
+            <Todo key={todo.id} {...todo} />
           ))}
         </TodoList>
       </main>

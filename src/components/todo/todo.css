@@ -1,23 +1,27 @@
 .todo {
-  display: flex;
-  flex-direction: column;
+  display: grid;
   gap: .5rem;
   border: 1px solid white;
-  padding: .5rem;
+  padding: 1rem;
 
   h2 {
-    padding-bottom: .5rem;
+    padding-bottom: .75rem;
   }
 
   ul {
     display: flex;
     list-style: none;
     gap: 1rem;
+    margin: .5rem 0;
 
     li {
       border: 1px solid white;
-      padding: .25rem;
+      padding: .35rem .75rem;
       text-transform: capitalize;
     }
+  }
+
+  .remove-button {
+    align-self: end;
   }
 }

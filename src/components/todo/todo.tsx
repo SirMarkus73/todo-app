@@ -8,11 +8,14 @@ export function Todo({ title, description, tags }: TodoInterface) {
       <p>{description}</p>
       {tags && (
         <ul>
-          {tags.map((tagName) => (
-            <li>{tagName}</li>
+          {tags.map((tagName, index) => (
+            <li key={`${tagName}-${index}`}>{tagName}</li>
           ))}
         </ul>
       )}
+      <button type="button" className="remove-button">
+        Eliminar
+      </button>
     </article>
   )
 }
