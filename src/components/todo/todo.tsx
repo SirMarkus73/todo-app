@@ -27,9 +27,10 @@ export function Todo({ id, title, description, tags, removeFunction }: Props) {
             clipPath: "inset(0 100% 0 0)",
           }}
           animate={{
-            transition: { duration: 1, delay: 0.525 },
+            transition: { duration: 1, delay: 0.26 },
             clipPath: "inset(0 0 0 0)",
           }}
+          transition={{ duration: 0.25 }}
           exit={{
             clipPath: "inset(0 100% 0 0)",
           }}
