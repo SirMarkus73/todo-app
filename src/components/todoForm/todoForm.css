@@ -1,0 +1,28 @@
+.todo-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  max-width: 25rem;
+  margin: 0 auto;
+
+  legend {
+    font-size: large;
+    padding-bottom: 1rem;
+  }
+
+  label {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+
+    textarea,
+    input {
+      width: 70%;
+    }
+  }
+
+  textarea {
+    resize: none;
+    field-sizing: content;
+  }
+}

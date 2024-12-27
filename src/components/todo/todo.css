@@ -1,0 +1,23 @@
+.todo {
+  display: flex;
+  flex-direction: column;
+  gap: .5rem;
+  border: 1px solid white;
+  padding: .5rem;
+
+  h2 {
+    padding-bottom: .5rem;
+  }
+
+  ul {
+    display: flex;
+    list-style: none;
+    gap: 1rem;
+
+    li {
+      border: 1px solid white;
+      padding: .25rem;
+      text-transform: capitalize;
+    }
+  }
+}
