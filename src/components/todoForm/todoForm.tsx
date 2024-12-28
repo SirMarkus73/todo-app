@@ -61,7 +61,9 @@ export function TodoForm() {
       <TagGenerator onUpdate={updateTags} />
       <TagList tags={tags} removeTag={removeTag} />
 
-      <button type="submit">Crear todo</button>
+      <button type="submit" className="border border-slate-400 rounded-md">
+        Crear todo
+      </button>
     </form>
   )
 }
