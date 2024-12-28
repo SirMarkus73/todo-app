@@ -16,7 +16,8 @@
     gap: 1rem;
 
     textarea,
-    input {
+    input,
+    select {
       width: 70%;
     }
   }
@@ -25,4 +26,10 @@
     resize: none;
     field-sizing: content;
   }
+}
+
+.tags-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
 }
