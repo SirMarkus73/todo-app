@@ -4,12 +4,22 @@ import { initialTodos } from "../constants/constats"
 
 interface State {
   todos: Todo[]
+  setTodos: (Todos: Todo[]) => void
   insertTodo: (todoToInsert: PublicTodo) => void
   removeTodo: (id: TodoId) => void
 }
 
+const localStorageData = localStorage.getItem("todos")
+
+const initTodos: Todo[] = localStorageData
+  ? JSON.parse(localStorageData)
+  : initialTodos
+
 export const useTodosStore = create<State>((set) => ({
-  todos: initialTodos,
+  todos: initTodos,
+  setTodos: (todos) => {
+    set({ todos })
+  },
   insertTodo: (todoToInsert) => {
     set((prevState) => {
       let newId = 0
