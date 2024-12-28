@@ -36,10 +36,18 @@ export function TagGenerator({ onUpdate, removeAll }: Props) {
           onKeyDown={addTagOnEnter}
         />
         <div className="flex gap-2">
-          <button onClick={submit} type="button">
+          <button
+            onClick={submit}
+            type="button"
+            aria-label="insertar una nueva tarea"
+          >
             <Plus />
           </button>
-          <button onClick={removeAll} type="button">
+          <button
+            onClick={removeAll}
+            type="button"
+            aria-label="eliminar todas las tareas"
+          >
             <Multiplication />
           </button>
         </div>

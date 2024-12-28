@@ -29,7 +29,7 @@ export function TagList({ tags, removeTag }: Props) {
               scale: 0,
               overflow: "clip",
             }}
-            className="flex gap-2 py-2 px-4 border border-slate-500 rounded-md bg-purple-700/15"
+            className="flex gap-2 py-2 px-4 border border-slate-500 rounded-md bg-purple-700/15 text-white"
           >
             {tag}
             <motion.button

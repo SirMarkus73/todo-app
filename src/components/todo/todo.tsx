@@ -57,7 +57,7 @@ export function Todo({
               {tags.map((tagName, index) => (
                 <motion.li
                   key={tagName}
-                  className="border border-slate-500 rounded-md px-2 py-1 bg-purple-400/15"
+                  className="border border-slate-500 rounded-md px-2 py-1 bg-purple-400/15 text-white"
                   initial={{ opacity: 0 }}
                   animate={{
                     opacity: 1,
