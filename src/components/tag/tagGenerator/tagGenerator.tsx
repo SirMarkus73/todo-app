@@ -1,4 +1,5 @@
 import { useState } from "react"
+import { Plus } from "../../../icons/plus"
 
 interface Props {
   onUpdate: ({ tagValue }: { tagValue: string }) => void
@@ -23,17 +24,17 @@ export function TagGenerator({ onUpdate }: Props) {
   return (
     <div className="flex justify-between">
       Tags:
-      <label className="w-3/4 border border-slate-500  rounded-md p-1">
+      <label className="w-3/4 border border-slate-500  rounded-md p-1 flex justify-between">
         <input
           name="tag"
           placeholder="react"
+          className="flex-1"
           value={tagInputValue}
           onChange={(e) => setTagInputValue(e.target.value)}
           onKeyDown={addTagOnEnter}
-          className="w-3/4"
         />
-        <button onClick={submit} type="button" className="w-1/4">
-          añadir
+        <button onClick={submit} type="button">
+          <Plus />
         </button>
       </label>
     </div>
