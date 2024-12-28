@@ -1,6 +1,5 @@
 import { useState } from "react"
 import { useTodos } from "../../hooks/useTodos"
-import "./todoForm.css"
 import { TagGenerator } from "../tag/tagGenerator/tagGenerator"
 import { TagList } from "../tag/tagList/tagList"
 
@@ -35,18 +34,28 @@ export function TodoForm() {
   }
 
   return (
-    <form className="todo-form" action={onSubmit}>
-      <legend>Crear todo (tareas por hacer)</legend>
-      <label>
+    <form
+      className="flex flex-col mx-auto content-around gap-3"
+      action={onSubmit}
+    >
+      <legend className="text-2xl">Crear todo (tareas por hacer)</legend>
+      <label className="flex justify-between">
         Titulo:
-        <input type="text" name="title" required placeholder="Estudiar react" />
+        <input
+          type="text"
+          name="title"
+          required
+          placeholder="Estudiar react"
+          className="border border-slate-500 rounded-md p-1 w-3/4"
+        />
       </label>
-      <label>
+      <label className="flex justify-between">
         Descripción:
         <textarea
           name="description"
           required
           placeholder="Tengo que estudiar react hoy a la tarde el `useEffect()...`"
+          className="border border-slate-500 rounded-md p-1 w-3/4"
         ></textarea>
       </label>
       <TagGenerator onUpdate={updateTags} />

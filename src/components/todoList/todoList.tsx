@@ -1,5 +1,4 @@
 import type { ReactNode } from "react"
-import "./todoList.css"
 import { motion } from "motion/react"
 interface Props {
   children: ReactNode
@@ -7,7 +6,10 @@ interface Props {
 
 export function TodoList({ children }: Props) {
   return (
-    <motion.div className="todo-list" layout>
+    <motion.div
+      className="columns-sm  break-inside-avoid-page gap-2 *:mb-2  mt-8 *:break-inside-avoid-column"
+      layout
+    >
       {children ? (
         children
       ) : (

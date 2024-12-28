@@ -16,10 +16,10 @@ function App() {
 
   return (
     <>
-      <header>
+      <header className="mx-auto w-10/12">
         <TodoForm />
       </header>
-      <main>
+      <main className="mx-auto w-10/12">
         <TodoList>
           {todos.length > 0 &&
             todos.map((todo, index) => (

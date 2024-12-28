@@ -1,6 +1,5 @@
 import { useState } from "react"
 import type { Todo as TodoInterface } from "../../types.d.ts"
-import "./todo.css"
 import { motion, AnimatePresence } from "motion/react"
 import { useTodos } from "../../hooks/useTodos.ts"
 
@@ -42,7 +41,7 @@ export function Todo({
     <AnimatePresence onExitComplete={onExitComplete}>
       {isActive && (
         <motion.article
-          className="todo"
+          className="grid gap-3 border border-slate-600 rounded-md p-4"
           layout
           transition={{ duration: 0.65, type: "spring", bounce: 0.333 }}
           variants={articleVariants}
@@ -51,18 +50,23 @@ export function Todo({
           exit="hidden"
           custom={startingDelay}
         >
-          <h2>{title}</h2>
-          <p>{description}</p>
+          <h2 className="text-2xl font-bold text-balance">{title}</h2>
+          <p className="text-wrap break-all">{description}</p>
           {tags && (
-            <ul>
+            <ul className="flex gap-2">
               {tags.map((tagName, index) => (
-                <li key={`${tagName}-${index}`}>{tagName}</li>
+                <li
+                  key={`${tagName}-${index}`}
+                  className="border border-slate-500 rounded-md px-2 py-1 bg-purple-400/15"
+                >
+                  {tagName}
+                </li>
               ))}
             </ul>
           )}
           <button
             type="button"
-            className="remove-button"
+            className="self-end"
             onClick={onClickRemoveTodo}
           >
             Eliminar
