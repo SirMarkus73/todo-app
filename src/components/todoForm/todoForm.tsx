@@ -1,16 +1,14 @@
-import { PublicTodo } from "../../types"
+import { useTodos } from "../../hooks/useTodos"
 import "./todoForm.css"
 
-interface Props {
-  addFunction: ({ description, title, tags }: PublicTodo) => void
-}
+export function TodoForm() {
+  const { insertTodo } = useTodos()
 
-export function TodoForm({ addFunction }: Props) {
   const onSubmit = (formdata: FormData) => {
     const title = String(formdata.get("title"))
     const description = String(formdata.get("description"))
 
-    addFunction({ title, description })
+    insertTodo({ title, description })
   }
 
   return (

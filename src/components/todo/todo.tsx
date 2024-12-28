@@ -1,10 +1,10 @@
 import { useState } from "react"
-import type { TodoId, Todo as TodoInterface } from "../../types.d.ts"
+import type { Todo as TodoInterface } from "../../types.d.ts"
 import "./todo.css"
 import { motion, AnimatePresence } from "motion/react"
+import { useTodos } from "../../hooks/useTodos.ts"
 
 interface Props extends TodoInterface {
-  removeFunction: ({ id }: { id: TodoId }) => void
   startingDelay?: number
 }
 
@@ -25,17 +25,17 @@ export function Todo({
   title,
   description,
   tags,
-  removeFunction,
   startingDelay = defaultDelay,
 }: Props) {
   const [isActive, setActive] = useState(true)
+  const { removeTodo } = useTodos()
 
   const onClickRemoveTodo = () => {
     setActive(!isActive)
   }
 
   const onExitComplete = () => {
-    removeFunction({ id })
+    removeTodo({ id })
   }
 
   return (
