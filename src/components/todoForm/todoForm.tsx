@@ -46,7 +46,7 @@ export function TodoForm() {
           name="title"
           required
           placeholder="Estudiar react"
-          className="border border-slate-500 rounded-md p-1 w-3/4"
+          className="border border-slate-500 rounded-md p-1 md:w-3/4"
         />
       </label>
       <label className="flex flex-col md:flex-row justify-between">
@@ -55,7 +55,7 @@ export function TodoForm() {
           name="description"
           required
           placeholder="Tengo que estudiar react hoy a la tarde el `useEffect()...`"
-          className="border border-slate-500 rounded-md p-1 w-3/4"
+          className="border border-slate-500 rounded-md p-1 md:w-3/4"
         ></textarea>
       </label>
       <TagGenerator onUpdate={updateTags} />
