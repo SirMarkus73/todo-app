@@ -53,14 +53,19 @@ export function Todo({
           <h2 className="text-2xl font-bold text-balance">{title}</h2>
           <p className="text-wrap break-all">{description}</p>
           {tags && (
-            <ul className="flex gap-2">
+            <ul className="flex flex-wrap gap-2">
               {tags.map((tagName, index) => (
-                <li
-                  key={`${tagName}-${index}`}
+                <motion.li
+                  key={tagName}
                   className="border border-slate-500 rounded-md px-2 py-1 bg-purple-400/15"
+                  initial={{ opacity: 0 }}
+                  animate={{
+                    opacity: 1,
+                    transition: { delay: index + 0.8 * 0.5 + defaultDelay },
+                  }}
                 >
                   {tagName}
-                </li>
+                </motion.li>
               ))}
             </ul>
           )}
