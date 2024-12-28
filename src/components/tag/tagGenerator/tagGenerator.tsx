@@ -22,7 +22,7 @@ export function TagGenerator({ onUpdate }: Props) {
   }
 
   return (
-    <div className="flex justify-between">
+    <div className="flex flex-col md:flex-row justify-between">
       Tags:
       <label className="w-3/4 border border-slate-500  rounded-md p-1 flex justify-between">
         <input

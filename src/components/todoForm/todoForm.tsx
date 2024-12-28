@@ -39,7 +39,7 @@ export function TodoForm() {
       action={onSubmit}
     >
       <legend className="text-2xl">Crear todo (tareas por hacer)</legend>
-      <label className="flex justify-between">
+      <label className="flex flex-col md:flex-row justify-between">
         Titulo:
         <input
           type="text"
@@ -49,7 +49,7 @@ export function TodoForm() {
           className="border border-slate-500 rounded-md p-1 w-3/4"
         />
       </label>
-      <label className="flex justify-between">
+      <label className="flex flex-col md:flex-row justify-between">
         Descripción:
         <textarea
           name="description"
