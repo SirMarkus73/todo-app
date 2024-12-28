@@ -1,11 +1,13 @@
 import { useState } from "react"
 import { Plus } from "../../../icons/plus"
+import { Multiplication } from "../../../icons/multiplication"
 
 interface Props {
   onUpdate: ({ tagValue }: { tagValue: string }) => void
+  removeAll: () => void
 }
 
-export function TagGenerator({ onUpdate }: Props) {
+export function TagGenerator({ onUpdate, removeAll }: Props) {
   const [tagInputValue, setTagInputValue] = useState<string>("")
 
   const addTagOnEnter = (e: React.KeyboardEvent<HTMLInputElement>) => {
@@ -33,9 +35,14 @@ export function TagGenerator({ onUpdate }: Props) {
           onChange={(e) => setTagInputValue(e.target.value)}
           onKeyDown={addTagOnEnter}
         />
-        <button onClick={submit} type="button">
-          <Plus />
-        </button>
+        <div className="flex gap-2">
+          <button onClick={submit} type="button">
+            <Plus />
+          </button>
+          <button onClick={removeAll} type="button">
+            <Multiplication />
+          </button>
+        </div>
       </label>
     </div>
   )

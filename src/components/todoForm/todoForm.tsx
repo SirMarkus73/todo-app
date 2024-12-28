@@ -7,13 +7,17 @@ export function TodoForm() {
   const { insertTodo } = useTodos()
   const [tags, setTags] = useState<string[]>([])
 
+  const removeAllTags = () => {
+    setTags([])
+  }
+
   const onSubmit = (formdata: FormData) => {
     const title = String(formdata.get("title"))
     const description = String(formdata.get("description"))
     console.log(formdata.get("tags"))
 
     insertTodo({ title, description, tags })
-    setTags([])
+    removeAllTags()
   }
   const removeTag = ({ tag }: { tag: string }) => {
     setTags((prev) => {
@@ -58,7 +62,7 @@ export function TodoForm() {
           className="border border-slate-500 rounded-md p-1 md:w-3/4"
         ></textarea>
       </label>
-      <TagGenerator onUpdate={updateTags} />
+      <TagGenerator onUpdate={updateTags} removeAll={removeAllTags} />
       <TagList tags={tags} removeTag={removeTag} />
 
       <button type="submit" className="border border-slate-400 rounded-md">
