@@ -39,11 +39,15 @@ export function TodoForm() {
       <legend>Crear todo (tareas por hacer)</legend>
       <label>
         Titulo:
-        <input type="text" name="title" required />
+        <input type="text" name="title" required placeholder="Estudiar react" />
       </label>
       <label>
         Descripción:
-        <textarea name="description" required></textarea>
+        <textarea
+          name="description"
+          required
+          placeholder="Tengo que estudiar react hoy a la tarde el `useEffect()...`"
+        ></textarea>
       </label>
       <TagGenerator onUpdate={updateTags} />
       <TagList tags={tags} removeTag={removeTag} />

@@ -27,6 +27,7 @@ export function TagGenerator({ onUpdate }: Props) {
       <label>
         <input
           name="tag"
+          placeholder="react"
           value={tagInputValue}
           onChange={(e) => setTagInputValue(e.target.value)}
           onKeyDown={addTagOnEnter}
