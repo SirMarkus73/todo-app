@@ -8,8 +8,8 @@
   "files": {
     "ignoreUnknown": false,
     "ignore": [
-      "./node_modules",
-      "./dist",
+      "./node_modules/**",
+      "./dist/**",
       "./tsconfig.app.json",
       "./tsconfig.node.json",
       "./src/index.css"
