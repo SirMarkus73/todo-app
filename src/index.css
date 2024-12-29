@@ -13,4 +13,5 @@ body {
 
 textarea {
   field-sizing: content;
+  resize: none;
 }
