@@ -59,7 +59,7 @@ export function TodoForm() {
           name="description"
           required
           placeholder="Tengo que estudiar react hoy a la tarde el `useEffect()...`"
-          className="border border-slate-500 rounded-md p-1 md:w-3/4"
+          className="border border-slate-500 rounded-md p-1 md:w-3/4 field-sizing-content"
         ></textarea>
       </label>
       <TagGenerator onUpdate={updateTags} removeAll={removeAllTags} />
