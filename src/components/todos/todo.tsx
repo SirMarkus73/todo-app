@@ -61,7 +61,9 @@ export function Todo({
                   initial={{ opacity: 0 }}
                   animate={{
                     opacity: 1,
-                    transition: { delay: index + 0.8 * 0.5 + defaultDelay },
+                    transition: {
+                      delay: index + 0.8 * 0.5 + startingDelay,
+                    },
                   }}
                 >
                   {tagName}
