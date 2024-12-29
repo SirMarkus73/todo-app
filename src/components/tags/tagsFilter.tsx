@@ -13,7 +13,7 @@ const buttonVariants = {
 }
 
 export function TagsFilter() {
-  const { todoTags, setFilter, currentFilter } = useTodos()
+  const { uniqueTodoTags, setFilter, currentFilter } = useTodos()
 
   const isSelected = (tag: string) => tag === currentFilter
   const changeFilter = (tag: string) => {
@@ -26,7 +26,7 @@ export function TagsFilter() {
 
   return (
     <ul className="flex flex-wrap gap-2">
-      {todoTags?.map((tag) => (
+      {uniqueTodoTags?.map((tag) => (
         <Tag key={tag}>
           <motion.button
             onClick={() => changeFilter(tag)}

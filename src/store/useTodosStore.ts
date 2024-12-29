@@ -4,13 +4,16 @@ import type { PublicTodo, Tag, Todo, TodoId } from "../types"
 
 interface State {
   todos: Todo[]
-  tagFilter: string | null
-  todoTags: Todo["tags"]
-  setFilter: ({ tag }: { tag: Tag | null }) => void
+  tagFilterSelected: string | null
+  uniqueTodoTags: Todo["tags"]
+}
+
+interface Actions {
+  setActiveTagFilter: ({ tag }: { tag: Tag | null }) => void
   setTodos: (Todos: Todo[]) => void
   insertTodo: (todoToInsert: PublicTodo) => void
   removeTodo: (id: TodoId) => void
-  getTodosTags: () => Todo["tags"]
+  getUniqueTodoTags: () => Todo["tags"]
 }
 
 const localStorageData = localStorage.getItem("todos")
@@ -19,20 +22,22 @@ const initTodos: Todo[] = localStorageData
   ? JSON.parse(localStorageData)
   : initialTodos
 
-const initialTodoTags = initTodos
-  .flatMap((todo) => todo.tags)
-  .filter((tag) => tag !== undefined)
+const initTags = [
+  ...new Set(
+    initTodos.flatMap((todo) => todo.tags).filter((tag) => tag !== undefined),
+  ),
+]
 
-export const useTodosStore = create<State>((set, get) => ({
+export const useTodosStore = create<State & Actions>((set, get) => ({
   todos: initTodos,
-  tagFilter: null,
-  todoTags: initialTodoTags,
-  setFilter: ({ tag }) => {
-    set({ tagFilter: tag })
+  tagFilterSelected: null,
+  uniqueTodoTags: initTags,
+  setActiveTagFilter: ({ tag }) => {
+    set({ tagFilterSelected: tag })
   },
   setTodos: (todos) => {
     set({ todos })
-    set({ todoTags: get().getTodosTags() })
+    set({ uniqueTodoTags: get().getUniqueTodoTags() })
   },
   insertTodo: (todoToInsert) => {
     set((prevState) => {
@@ -45,16 +50,16 @@ export const useTodosStore = create<State>((set, get) => ({
       const newTodos = [...prevState.todos, newTodo]
       return { todos: newTodos }
     })
-    set({ todoTags: get().getTodosTags() })
+    set({ uniqueTodoTags: get().getUniqueTodoTags() })
   },
   removeTodo: ({ id }) => {
     set((prevState) => {
       const newTodos = prevState.todos.filter((todo) => todo.id !== id)
       return { todos: newTodos }
     })
-    set({ todoTags: get().getTodosTags() })
+    set({ uniqueTodoTags: get().getUniqueTodoTags() })
   },
-  getTodosTags: () => {
+  getUniqueTodoTags: () => {
     const todos = get().todos
     const tags = todos
       .flatMap((todo) => todo.tags)
