@@ -7,6 +7,7 @@ import { Modal } from "./components/ui/modal"
 import { useTodos } from "./hooks/useTodos"
 import { Plus } from "./icons/plus"
 import { useModal } from "./hooks/useModal"
+import { TagsFilter } from "./components/tags/tagsFilter"
 
 function App() {
   const { todos } = useTodos()
@@ -30,6 +31,7 @@ function App() {
         </Modal>
       </header>
       <main className="mx-auto w-10/12">
+        <TagsFilter />
         <TodoList>
           {todos.length > 0 &&
             todos.map((todo, index) => (
