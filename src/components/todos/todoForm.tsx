@@ -1,40 +1,18 @@
-import { useState } from "react"
+import { useTags } from "../../hooks/useTags"
 import { useTodos } from "../../hooks/useTodos"
 import { TagGenerator } from "../tags/tagGenerator"
 import { TagList } from "../tags/tagList"
 
 export function TodoForm() {
   const { insertTodo } = useTodos()
-  const [tags, setTags] = useState<string[]>([])
-
-  const removeAllTags = () => {
-    setTags([])
-  }
+  const { tags, updateTags, removeTag, removeAllTags } = useTags()
 
   const onSubmit = (formdata: FormData) => {
     const title = String(formdata.get("title"))
     const description = String(formdata.get("description"))
-    console.log(formdata.get("tags"))
 
     insertTodo({ title, description, tags })
     removeAllTags()
-  }
-  const removeTag = ({ tag }: { tag: string }) => {
-    setTags((prev) => {
-      const filteredTags = prev.filter((filterTag) => {
-        if (filterTag !== tag) return true
-      })
-
-      return filteredTags
-    })
-  }
-  const updateTags = ({ tagValue }: { tagValue: string }) => {
-    setTags((prev) => {
-      if (tagValue === "" || prev.find((el) => el === tagValue)) {
-        return prev
-      }
-      return [...prev, tagValue]
-    })
   }
 
   return (

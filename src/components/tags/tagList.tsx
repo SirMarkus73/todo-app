@@ -7,12 +7,7 @@ interface Props {
 
 export function TagList({ tags, removeTag }: Props) {
   return (
-    <motion.ul
-      initial={{ opacity: 1 }}
-      animate={{ opacity: 1 }}
-      layout
-      className="mb-10 flex flex-wrap gap-4 text-sm"
-    >
+    <motion.ul layout className="mb-10 flex flex-wrap gap-4 text-sm">
       <AnimatePresence>
         {tags.map((tag) => (
           <motion.li
@@ -23,15 +18,13 @@ export function TagList({ tags, removeTag }: Props) {
               scale: [1, 1, 1],
               y: ["100%", "100%", 0],
               opacity: 1,
-              width: "auto",
             }}
             exit={{
               scale: 0,
-              overflow: "clip",
             }}
             className="flex gap-2 rounded-md border border-slate-500 bg-purple-700/15 px-4 py-2 text-white"
           >
-            {tag}
+            <span className="capitalize">{tag}</span>
             <motion.button
               type="button"
               onClick={() => removeTag({ tag })}

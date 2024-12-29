@@ -3,7 +3,6 @@ import type React from "react"
 import { createPortal } from "react-dom"
 import { IconButton } from "./iconButton"
 import { Multiplication } from "../../icons/multiplication"
-import { useEffect } from "react"
 
 interface Props {
   ref: React.RefObject<HTMLDialogElement | null>
@@ -14,12 +13,7 @@ interface Props {
 
 export function Modal({ ref, closeSender, children, isOpen }: Props) {
   const root = document.querySelector("#root")
-
-  useEffect(() => {
-    console.log(ref.current?.open)
-  })
-
-  if (!root) return
+  if (!root) return null
 
   return createPortal(
     <dialog

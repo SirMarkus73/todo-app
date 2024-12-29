@@ -1,6 +1,5 @@
 import { useState } from "react"
 import { Multiplication } from "../../icons/multiplication"
-import { Plus } from "../../icons/plus"
 
 interface Props {
   onUpdate: ({ tagValue }: { tagValue: string }) => void
@@ -11,16 +10,11 @@ export function TagGenerator({ onUpdate, removeAll }: Props) {
   const [tagInputValue, setTagInputValue] = useState<string>("")
 
   const addTagOnEnter = (e: React.KeyboardEvent<HTMLInputElement>) => {
-    if (e.key === "Enter") {
+    if ((e.key === "Enter" || e.key === " ") && tagInputValue.trim() !== "") {
       e.preventDefault()
       setTagInputValue("")
-      onUpdate({ tagValue: tagInputValue })
+      onUpdate({ tagValue: tagInputValue.toLowerCase() })
     }
-  }
-
-  const submit = () => {
-    onUpdate({ tagValue: tagInputValue })
-    setTagInputValue("")
   }
 
   return (
@@ -29,20 +23,13 @@ export function TagGenerator({ onUpdate, removeAll }: Props) {
       <label className="flex justify-between rounded-md border border-slate-500 p-1 md:w-3/4">
         <input
           name="tag"
-          placeholder="react"
+          placeholder="Tags separadas por espacios"
           className="flex-1"
           value={tagInputValue}
           onChange={(e) => setTagInputValue(e.target.value)}
           onKeyDown={addTagOnEnter}
         />
         <div className="flex gap-2">
-          <button
-            onClick={submit}
-            type="button"
-            aria-label="insertar una nueva tarea"
-          >
-            <Plus />
-          </button>
           <button
             onClick={removeAll}
             type="button"
