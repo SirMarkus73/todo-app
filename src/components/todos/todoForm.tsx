@@ -39,7 +39,7 @@ export function TodoForm() {
 
   return (
     <form
-      className="mx-auto flex flex-col content-around gap-3"
+      className="flex w-auto flex-col content-around gap-3"
       action={onSubmit}
     >
       <legend className="text-2xl">Crear todo (tareas por hacer)</legend>

@@ -1,32 +1,47 @@
 import { motion } from "motion/react"
 import type React from "react"
 import { createPortal } from "react-dom"
+import { IconButton } from "./iconButton"
+import { Multiplication } from "../../icons/multiplication"
+import { useEffect } from "react"
 
 interface Props {
   ref: React.RefObject<HTMLDialogElement | null>
   closeSender: () => void
   children?: React.ReactNode
+  isOpen: boolean
 }
 
-export function Modal({ ref, closeSender, children }: Props) {
+export function Modal({ ref, closeSender, children, isOpen }: Props) {
   const root = document.querySelector("#root")
+
+  useEffect(() => {
+    console.log(ref.current?.open)
+  })
 
   if (!root) return
 
   return createPortal(
-    <motion.dialog
-      className="h-[80dvh] w-[90vw] rounded-lg bg-zinc-800/90 p-8 backdrop:bg-zinc-800/20"
+    <dialog
+      className="h-[80dvh] w-[90vw] rounded-lg bg-zinc-800/90 p-3 backdrop:bg-zinc-800/20 md:p-6"
       ref={ref}
     >
-      <button
-        onClick={closeSender}
-        type="button"
-        className="float-end m-2 rounded-md border border-slate-500 p-3"
-      >
-        cerrar
-      </button>
-      {children}
-    </motion.dialog>,
+      {isOpen && (
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          className="flex flex-col gap-2"
+        >
+          <IconButton
+            onClick={closeSender}
+            icon={<Multiplication />}
+            type="button"
+            className="self-end"
+          />
+          {children}
+        </motion.div>
+      )}
+    </dialog>,
     root,
   )
 }

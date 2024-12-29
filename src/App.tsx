@@ -11,7 +11,7 @@ import { useModal } from "./hooks/useModal"
 function App() {
   const { todos } = useTodos()
   const [loads, setLoads] = useState(0)
-  const { ref: modalRef, openModal, closeModal } = useModal()
+  const { ref: modalRef, openModal, closeModal, isOpen: modalOpen } = useModal()
 
   useEffect(() => {
     setLoads((prev) => prev + 1)
@@ -25,7 +25,7 @@ function App() {
         <IconButton onClick={openModal} icon={<Plus />} type="button">
           Crear todo
         </IconButton>
-        <Modal closeSender={closeModal} ref={modalRef}>
+        <Modal closeSender={closeModal} ref={modalRef} isOpen={modalOpen}>
           <TodoForm />
         </Modal>
       </header>
