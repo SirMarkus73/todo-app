@@ -11,7 +11,8 @@
       "./node_modules",
       "./dist",
       "./tsconfig.app.json",
-      "./tsconfig.node.json"
+      "./tsconfig.node.json",
+      "./src/index.css"
     ]
   },
   "formatter": {
@@ -22,7 +23,7 @@
     "enabled": true
   },
   "linter": {
-    "enabled": false,
+    "enabled": true,
     "rules": {
       "recommended": true
     }

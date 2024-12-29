@@ -1,6 +1,6 @@
 import { create } from "zustand"
-import type { PublicTodo, Todo, TodoId } from "../types"
 import { initialTodos } from "../constants/constats"
+import type { PublicTodo, Todo, TodoId } from "../types"
 
 interface State {
   todos: Todo[]
@@ -34,7 +34,7 @@ export const useTodosStore = create<State>((set) => ({
   },
   removeTodo: ({ id }) => {
     set((prevState) => {
-      const newTodos = prevState.todos.filter((todo) => todo.id != id)
+      const newTodos = prevState.todos.filter((todo) => todo.id !== id)
       return { todos: newTodos }
     })
   },

@@ -1,7 +1,7 @@
+import { AnimatePresence, motion } from "motion/react"
 import { useState } from "react"
-import type { Todo as TodoInterface } from "../../types.d.ts"
-import { motion, AnimatePresence } from "motion/react"
 import { useTodos } from "../../hooks/useTodos.ts"
+import type { Todo as TodoInterface } from "../../types.d.ts"
 
 interface Props extends TodoInterface {
   startingDelay?: number

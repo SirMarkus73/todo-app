@@ -22,7 +22,7 @@ export function TodoForm() {
   const removeTag = ({ tag }: { tag: string }) => {
     setTags((prev) => {
       const filteredTags = prev.filter((filterTag) => {
-        if (filterTag != tag) return true
+        if (filterTag !== tag) return true
       })
 
       return filteredTags
@@ -60,7 +60,7 @@ export function TodoForm() {
           required
           placeholder="Tengo que estudiar react hoy a la tarde el `useEffect()...`"
           className="border border-slate-500 rounded-md p-1 md:w-3/4 field-sizing-content"
-        ></textarea>
+        />
       </label>
       <TagGenerator onUpdate={updateTags} removeAll={removeAllTags} />
       <TagList tags={tags} removeTag={removeTag} />

@@ -1,5 +1,7 @@
-import React, { useEffect, useRef } from "react"
+import type React from "react"
+import { useEffect, useRef } from "react"
 import { createPortal } from "react-dom"
+
 interface Props {
   isOpen: boolean
   closeSender: () => void
@@ -28,7 +30,6 @@ export function Modal({ isOpen, closeSender, children }: Props) {
         onClick={closeSender}
         type="button"
         className="float-end p-3 border border-slate-500 m-2 rounded-md"
-        autoFocus
       >
         cerrar
       </button>

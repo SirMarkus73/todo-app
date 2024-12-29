@@ -1,11 +1,11 @@
-import { TodoForm } from "./components/todos/todoForm"
-import { Todo } from "./components/todos/todo"
-import { TodoList } from "./components/todos/todoList"
-import { useTodos } from "./hooks/useTodos"
 import { useEffect, useState } from "react"
-import { Modal } from "./components/ui/modal"
-import { Plus } from "./icons/plus"
+import { Todo } from "./components/todos/todo"
+import { TodoForm } from "./components/todos/todoForm"
+import { TodoList } from "./components/todos/todoList"
 import { IconButton } from "./components/ui/iconButton"
+import { Modal } from "./components/ui/modal"
+import { useTodos } from "./hooks/useTodos"
+import { Plus } from "./icons/plus"
 
 function App() {
   const { todos } = useTodos()
@@ -14,14 +14,18 @@ function App() {
 
   useEffect(() => {
     setLoads((prev) => prev + 1)
-  }, [setLoads])
+  }, [])
 
-  const useDelay = loads >= 1 ? false : true
+  const useDelay = loads >= 1
 
   return (
     <>
       <header className="mx-auto w-10/12 mt-10 flex justify-center">
-        <IconButton onClick={() => setModalOpen(true)} icon={<Plus />}>
+        <IconButton
+          onClick={() => setModalOpen(true)}
+          icon={<Plus />}
+          type="button"
+        >
           Crear todo
         </IconButton>
         <Modal isOpen={modalOpen} closeSender={() => setModalOpen(false)}>
