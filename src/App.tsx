@@ -1,6 +1,6 @@
-import { TodoForm } from "./components/todoForm/todoForm"
-import { Todo } from "./components/todo/todo"
-import { TodoList } from "./components/todoList/todoList"
+import { TodoForm } from "./components/todos/todoForm"
+import { Todo } from "./components/todos/todo"
+import { TodoList } from "./components/todos/todoList"
 import { useTodos } from "./hooks/useTodos"
 import { useEffect, useState } from "react"
 

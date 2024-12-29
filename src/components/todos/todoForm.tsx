@@ -1,7 +1,7 @@
 import { useState } from "react"
 import { useTodos } from "../../hooks/useTodos"
-import { TagGenerator } from "../tag/tagGenerator/tagGenerator"
-import { TagList } from "../tag/tagList/tagList"
+import { TagGenerator } from "../tags/tagGenerator"
+import { TagList } from "../tags/tagList"
 
 export function TodoForm() {
   const { insertTodo } = useTodos()
