@@ -7,7 +7,7 @@ interface Props {
 export function TodoList({ children }: Props) {
   return (
     <motion.div
-      className="columns-sm  break-inside-avoid-page gap-2 *:mb-2  mt-8 *:break-inside-avoid-column"
+      className="mt-8 columns-sm break-inside-avoid-page gap-2 *:mb-2 *:break-inside-avoid-column"
       layout
     >
       {children ? (

@@ -20,7 +20,7 @@ function App() {
 
   return (
     <>
-      <header className="mx-auto w-10/12 mt-10 flex justify-center">
+      <header className="mx-auto mt-10 flex w-10/12 justify-center">
         <IconButton
           onClick={() => setModalOpen(true)}
           icon={<Plus />}

@@ -9,7 +9,7 @@ export function IconButton({ icon, children, onClick, type }: Props) {
   return (
     <button
       onClick={onClick}
-      className="flex gap-2 border border-slate-600 bg-slate-500/20 hover:bg-slate-500/40 transition-colors p-3 rounded-md"
+      className="flex gap-2 rounded-md border border-slate-600 bg-slate-500/20 p-3 transition-colors hover:bg-slate-500/40"
       type={type}
     >
       {icon}

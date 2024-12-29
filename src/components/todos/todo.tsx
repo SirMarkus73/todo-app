@@ -41,7 +41,7 @@ export function Todo({
     <AnimatePresence onExitComplete={onExitComplete}>
       {isActive && (
         <motion.article
-          className="grid gap-3 border border-slate-600 rounded-md p-4"
+          className="grid gap-3 rounded-md border border-slate-600 p-4"
           layout
           transition={{ duration: 0.65, type: "spring", bounce: 0.333 }}
           variants={articleVariants}
@@ -50,14 +50,14 @@ export function Todo({
           exit="hidden"
           custom={startingDelay}
         >
-          <h2 className="text-2xl font-bold text-balance">{title}</h2>
+          <h2 className="text-balance font-bold text-2xl">{title}</h2>
           <p className="text-wrap break-all">{description}</p>
           {tags && (
             <ul className="flex flex-wrap gap-2">
               {tags.map((tagName, index) => (
                 <motion.li
                   key={tagName}
-                  className="border border-slate-500 rounded-md px-2 py-1 bg-purple-400/15 text-white"
+                  className="rounded-md border border-slate-500 bg-purple-400/15 px-2 py-1 text-white"
                   initial={{ opacity: 0 }}
                   animate={{
                     opacity: 1,

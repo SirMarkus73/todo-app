@@ -39,33 +39,33 @@ export function TodoForm() {
 
   return (
     <form
-      className="flex flex-col mx-auto content-around gap-3"
+      className="mx-auto flex flex-col content-around gap-3"
       action={onSubmit}
     >
       <legend className="text-2xl">Crear todo (tareas por hacer)</legend>
-      <label className="flex flex-col md:flex-row justify-between">
+      <label className="flex flex-col justify-between md:flex-row">
         Titulo:
         <input
           type="text"
           name="title"
           required
           placeholder="Estudiar react"
-          className="border border-slate-500 rounded-md p-1 md:w-3/4"
+          className="rounded-md border border-slate-500 p-1 md:w-3/4"
         />
       </label>
-      <label className="flex flex-col md:flex-row justify-between">
+      <label className="flex flex-col justify-between md:flex-row">
         Descripción:
         <textarea
           name="description"
           required
           placeholder="Tengo que estudiar react hoy a la tarde el `useEffect()...`"
-          className="border border-slate-500 rounded-md p-1 md:w-3/4 field-sizing-content"
+          className="field-sizing-content rounded-md border border-slate-500 p-1 md:w-3/4"
         />
       </label>
       <TagGenerator onUpdate={updateTags} removeAll={removeAllTags} />
       <TagList tags={tags} removeTag={removeTag} />
 
-      <button type="submit" className="border border-slate-400 rounded-md">
+      <button type="submit" className="rounded-md border border-slate-400">
         Crear todo
       </button>
     </form>

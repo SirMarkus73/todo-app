@@ -11,7 +11,7 @@ export function TagList({ tags, removeTag }: Props) {
       initial={{ opacity: 1 }}
       animate={{ opacity: 1 }}
       layout
-      className="flex flex-wrap gap-4 text-sm mb-10"
+      className="mb-10 flex flex-wrap gap-4 text-sm"
     >
       <AnimatePresence>
         {tags.map((tag) => (
@@ -29,7 +29,7 @@ export function TagList({ tags, removeTag }: Props) {
               scale: 0,
               overflow: "clip",
             }}
-            className="flex gap-2 py-2 px-4 border border-slate-500 rounded-md bg-purple-700/15 text-white"
+            className="flex gap-2 rounded-md border border-slate-500 bg-purple-700/15 px-4 py-2 text-white"
           >
             {tag}
             <motion.button
