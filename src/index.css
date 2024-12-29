@@ -10,3 +10,7 @@
 body {
   @apply p-2
 }
+
+textarea {
+  field-sizing: content;
+}
