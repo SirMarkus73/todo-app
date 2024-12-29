@@ -1,40 +1,32 @@
+import { motion } from "motion/react"
 import type React from "react"
-import { useEffect, useRef } from "react"
 import { createPortal } from "react-dom"
 
 interface Props {
-  isOpen: boolean
+  ref: React.RefObject<HTMLDialogElement | null>
   closeSender: () => void
   children?: React.ReactNode
 }
 
-export function Modal({ isOpen, closeSender, children }: Props) {
+export function Modal({ ref, closeSender, children }: Props) {
   const root = document.querySelector("#root")
-  const modalRef = useRef<HTMLDialogElement>(null)
 
-  useEffect(() => {
-    if (!modalRef.current) return
-
-    if (isOpen) {
-      modalRef.current.showModal()
-    } else {
-      modalRef.current.close()
-    }
-  }, [isOpen])
-
-  if (!root) return null
+  if (!root) return
 
   return createPortal(
-    <dialog className="h-[80dvh] w-[90vw] p-8 bg-zinc-800/90" ref={modalRef}>
+    <motion.dialog
+      className="h-[80dvh] w-[90vw] rounded-lg bg-zinc-800/90 p-8 backdrop:bg-zinc-800/20"
+      ref={ref}
+    >
       <button
         onClick={closeSender}
         type="button"
-        className="float-end p-3 border border-slate-500 m-2 rounded-md"
+        className="float-end m-2 rounded-md border border-slate-500 p-3"
       >
         cerrar
       </button>
       {children}
-    </dialog>,
+    </motion.dialog>,
     root,
   )
 }
