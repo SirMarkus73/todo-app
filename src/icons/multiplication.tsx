@@ -9,7 +9,7 @@ export function Multiplication() {
       strokeLinejoin="round"
       width="24"
       height="24"
-      stroke-width="2"
+      strokeWidth="2"
     >
       {" "}
       <path d="M10 10l4 4m0 -4l-4 4"></path>{" "}
