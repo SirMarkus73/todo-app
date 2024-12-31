@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react"
 import { Todo } from "./components/todos/todo"
 import { TodoForm } from "./components/todos/todoForm"
 import { TodoList } from "./components/todos/todoList"
@@ -8,17 +7,12 @@ import { useTodos } from "./hooks/useTodos"
 import { Plus } from "./icons/plus"
 import { useModal } from "./hooks/useModal"
 import { TagsFilter } from "./components/tags/tagsFilter"
+import { useFirstLoad } from "./hooks/useFirstLoad"
 
 function App() {
   const { todos } = useTodos()
-  const [loads, setLoads] = useState(0)
   const { ref: modalRef, openModal, closeModal, isOpen: modalOpen } = useModal()
-
-  useEffect(() => {
-    setLoads((prev) => prev + 1)
-  }, [])
-
-  const useDelay = loads >= 1
+  const { isFirstLoad } = useFirstLoad()
 
   return (
     <>
@@ -37,7 +31,7 @@ function App() {
             todos.map((todo, index) => (
               <Todo
                 key={todo.id}
-                startingDelay={useDelay ? index + 1 * 0.2 : undefined}
+                startingDelay={isFirstLoad ? index + 1 * 0.2 : undefined}
                 {...todo}
               />
             ))}

@@ -37,13 +37,20 @@ export function Todo({
     removeTodo({ id })
   }
 
+  console.log({ startingDelay, id })
+
   return (
     <AnimatePresence onExitComplete={onExitComplete}>
       {isActive && (
         <motion.article
           className="grid gap-3 rounded-md border border-slate-600 p-4"
           layout
-          transition={{ duration: 0.65, type: "spring", bounce: 0.333 }}
+          transition={{
+            duration: 0.65,
+            type: "spring",
+            bounce: 0.333,
+            delay: startingDelay,
+          }}
           variants={articleVariants}
           initial="hidden"
           animate="show"
