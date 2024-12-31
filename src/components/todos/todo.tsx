@@ -4,7 +4,7 @@ import { useTodos } from "@/hooks/useTodos.ts"
 import type { Todo as TodoInterface } from "@/types.d.ts"
 
 interface Props extends TodoInterface {
-  startingDelay?: number
+  index: number
 }
 
 const articleVariants = {
@@ -17,17 +17,11 @@ const articleVariants = {
   }),
 }
 
-const defaultDelay = 0.666
-
-export function Todo({
-  id,
-  title,
-  description,
-  tags,
-  startingDelay = defaultDelay,
-}: Props) {
+export function Todo({ id, title, description, tags, index }: Props) {
   const [isActive, setActive] = useState(true)
   const { removeTodo } = useTodos()
+
+  const delay = (index + 1) * 0.25
 
   const onClickRemoveTodo = () => {
     setActive(!isActive)
@@ -37,7 +31,7 @@ export function Todo({
     removeTodo({ id })
   }
 
-  console.log({ startingDelay, id })
+  console.log({ index, id })
 
   return (
     <AnimatePresence onExitComplete={onExitComplete}>
@@ -49,19 +43,18 @@ export function Todo({
             duration: 0.65,
             type: "spring",
             bounce: 0.333,
-            delay: startingDelay,
           }}
           variants={articleVariants}
           initial="hidden"
           animate="show"
           exit="hidden"
-          custom={startingDelay}
+          custom={delay}
         >
           <h2 className="text-balance font-bold text-2xl">{title}</h2>
           <p className="text-wrap break-all">{description}</p>
           {tags && (
             <ul className="flex flex-wrap gap-2">
-              {tags.map((tagName, index) => (
+              {tags.map((tagName) => (
                 <motion.li
                   key={tagName}
                   className="rounded-md border border-slate-500 bg-purple-400/15 px-2 py-1 text-white"
@@ -69,7 +62,7 @@ export function Todo({
                   animate={{
                     opacity: 1,
                     transition: {
-                      delay: index + 0.8 * 0.5 + startingDelay,
+                      delay,
                     },
                   }}
                 >

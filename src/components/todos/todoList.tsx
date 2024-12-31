@@ -1,17 +1,17 @@
+import { useTodos } from "@/hooks/useTodos"
 import { motion } from "motion/react"
-import type { ReactNode } from "react"
-interface Props {
-  children: ReactNode
-}
+import { Todo } from "./todo"
 
-export function TodoList({ children }: Props) {
+export function TodoList() {
+  const { todos } = useTodos()
+
   return (
     <motion.div
       className="mt-8 columns-sm break-inside-avoid-page gap-2 *:mb-2 *:break-inside-avoid-column"
       layout
     >
-      {children ? (
-        children
+      {todos.length > 0 ? (
+        todos.map((todo, i) => <Todo key={todo.id} index={i} {...todo} />)
       ) : (
         <motion.article
           layout
