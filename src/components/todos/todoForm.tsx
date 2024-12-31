@@ -1,7 +1,7 @@
-import { useTags } from "../../hooks/useTags"
-import { useTodos } from "../../hooks/useTodos"
-import { TagGenerator } from "../tags/tagGenerator"
-import { TagList } from "../tags/tagList"
+import { useTags } from "@/hooks/useTags"
+import { useTodos } from "@/hooks/useTodos"
+import { TagGenerator } from "@/components/tags/tagGenerator"
+import { TagList } from "@/components/tags/tagList"
 
 export function TodoForm() {
   const { insertTodo } = useTodos()

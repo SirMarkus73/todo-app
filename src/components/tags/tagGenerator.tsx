@@ -1,5 +1,5 @@
 import { useState } from "react"
-import { Multiplication } from "../../icons/multiplication"
+import { Multiplication } from "@/icons/multiplication"
 
 interface Props {
   onUpdate: ({ tagValue }: { tagValue: string }) => void

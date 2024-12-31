@@ -2,7 +2,7 @@ import { motion } from "motion/react"
 import type React from "react"
 import { createPortal } from "react-dom"
 import { IconButton } from "./iconButton"
-import { Multiplication } from "../../icons/multiplication"
+import { Multiplication } from "@/icons/multiplication"
 
 interface Props {
   ref: React.RefObject<HTMLDialogElement | null>

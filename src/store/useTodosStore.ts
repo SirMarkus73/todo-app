@@ -1,6 +1,6 @@
 import { create } from "zustand"
-import { initialTodos } from "../constants/constats"
-import type { PublicTodo, Tag, Todo, TodoId } from "../types"
+import { initialTodos } from "@/constants/constats"
+import type { PublicTodo, Tag, Todo, TodoId } from "@/types"
 
 interface State {
   todos: Todo[]

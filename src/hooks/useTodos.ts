@@ -1,6 +1,6 @@
 import { useEffect } from "react"
-import { useTodosStore } from "../store/useTodosStore"
-import type { Tag } from "../types"
+import { useTodosStore } from "@/store/useTodosStore"
+import type { Tag } from "@/types"
 
 export function useTodos() {
   const todos = useTodosStore((state) => state.todos)

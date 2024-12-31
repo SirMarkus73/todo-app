@@ -1,4 +1,4 @@
-import { useTodos } from "../../hooks/useTodos"
+import { useTodos } from "@/hooks/useTodos"
 import { Tag } from "./tag"
 import { motion } from "motion/react"
 
