@@ -9,5 +9,5 @@ export function useFirstLoad() {
 
   const isFirstLoad = !(loads >= 1)
 
-  return { isFirstLoad }
+  return { isFirstLoad, loads }
 }
