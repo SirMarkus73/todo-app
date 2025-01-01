@@ -35,11 +35,15 @@ export const useTodosStore = create<State & Actions>((set, get) => ({
   setActiveTagFilter: ({ tag }) => {
     set({ tagFilterSelected: tag })
   },
-  setTodos: (todos) => {
-    set({ todos })
-    set({ uniqueTodoTags: get().getUniqueTodoTags() })
+
+  setTodos: (todos: Todo[]): void => {
+    set({
+      todos,
+      uniqueTodoTags: get().getUniqueTodoTags(),
+    })
   },
-  insertTodo: (todoToInsert) => {
+
+  insertTodo: (todoToInsert: PublicTodo): void => {
     set((prevState) => {
       let newId = 0
       prevState.todos.map((todo) => {
@@ -48,18 +52,25 @@ export const useTodosStore = create<State & Actions>((set, get) => ({
 
       const newTodo: Todo = { id: newId, ...todoToInsert }
       const newTodos = [...prevState.todos, newTodo]
-      return { todos: newTodos }
+
+      return {
+        todos: newTodos,
+        uniqueTodoTags: get().getUniqueTodoTags(),
+      }
     })
-    set({ uniqueTodoTags: get().getUniqueTodoTags() })
   },
-  removeTodo: ({ id }) => {
+
+  removeTodo: ({ id }: TodoId): void => {
     set((prevState) => {
       const newTodos = prevState.todos.filter((todo) => todo.id !== id)
-      return { todos: newTodos }
+      return {
+        todos: newTodos,
+        uniqueTodoTags: get().getUniqueTodoTags(),
+      }
     })
-    set({ uniqueTodoTags: get().getUniqueTodoTags() })
   },
-  getUniqueTodoTags: () => {
+
+  getUniqueTodoTags: (): Tag[] => {
     const todos = get().todos
     const tags = todos
       .flatMap((todo) => todo.tags)
